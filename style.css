@@ -1,0 +1,493 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+
+body {
+    background:
+        radial-gradient(circle at 50% 20%, #101b45 0%, #050814 45%, #010207 100%);
+
+    color: white;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    display: flex;
+    justify-content: center;
+
+    overflow-x: hidden;
+
+    user-select: none;
+    -webkit-user-select: none;
+
+    touch-action: manipulation;
+}
+
+
+#game-wrapper {
+
+    width: 100%;
+    max-width: 560px;
+
+    padding: 12px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* =========================
+   HUD
+========================= */
+
+#hud {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr
+        1.3fr
+        1fr
+        45px;
+
+    gap: 5px;
+
+    margin-bottom: 8px;
+}
+
+
+.hud-box {
+
+    min-height: 46px;
+
+    border: 1px solid #277cff;
+
+    border-radius: 8px;
+
+    background:
+        rgba(8, 17, 42, 0.90);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    box-shadow:
+        0 0 10px rgba(0, 100, 255, 0.25);
+}
+
+
+.hud-label {
+
+    color: #6da8ff;
+
+    font-size: 9px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+
+.hud-box span:last-child {
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    margin-top: 2px;
+}
+
+
+#pauseButton {
+
+    border: 1px solid #277cff;
+
+    border-radius: 8px;
+
+    background: #0b1735;
+
+    color: white;
+
+    font-size: 20px;
+
+    cursor: pointer;
+}
+
+
+#pauseButton:active {
+
+    transform: scale(0.94);
+}
+
+
+/* =========================
+   GAME
+========================= */
+
+#game-container {
+
+    position: relative;
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 0 30px rgba(0, 80, 255, 0.25);
+}
+
+
+#gameCanvas {
+
+    display: block;
+
+    width: 500px;
+
+    max-width: 100%;
+
+    height: auto;
+
+    aspect-ratio: 5 / 6;
+
+    background: #02050f;
+
+    border: 2px solid #235cff;
+
+    border-radius: 10px;
+
+    image-rendering: auto;
+}
+
+
+/* =========================
+   OVERLAY
+========================= */
+
+.overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(0, 0, 15, 0.82);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 25px;
+
+    backdrop-filter: blur(3px);
+}
+
+
+.hidden {
+
+    display: none !important;
+}
+
+
+.menu-box {
+
+    width: 90%;
+
+    max-width: 370px;
+
+    padding: 28px 20px;
+
+    border: 1px solid #397cff;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(15, 31, 72, 0.97),
+            rgba(4, 8, 24, 0.97)
+        );
+
+    box-shadow:
+        0 0 35px rgba(30, 110, 255, 0.3);
+}
+
+
+.menu-box h1 {
+
+    font-size: 34px;
+
+    color: #65a5ff;
+
+    text-shadow:
+        0 0 15px #2c72ff;
+
+    margin-bottom: 5px;
+}
+
+
+.menu-box h2 {
+
+    color: #65a5ff;
+
+    margin-bottom: 20px;
+}
+
+
+.subtitle {
+
+    color: #ffcf4a;
+
+    font-weight: bold;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 20px;
+}
+
+
+.menu-box p {
+
+    color: #c8d5f0;
+
+    line-height: 1.6;
+
+    margin-bottom: 20px;
+}
+
+
+.menu-button {
+
+    width: 100%;
+
+    border: none;
+
+    border-radius: 10px;
+
+    padding: 14px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #246bff,
+            #7038ff
+        );
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 20px rgba(44, 104, 255, 0.35);
+}
+
+
+.menu-button:active {
+
+    transform: scale(0.97);
+}
+
+
+.instruction {
+
+    margin-top: 20px;
+
+    margin-bottom: 0 !important;
+
+    font-size: 12px;
+
+    color: #8497be !important;
+}
+
+
+/* =========================
+   TOUCH CONTROLS
+========================= */
+
+#touch-controls {
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-top: 12px;
+
+    gap: 15px;
+}
+
+
+.movement-controls {
+
+    display: flex;
+
+    gap: 10px;
+}
+
+
+.control-button,
+.shoot-button {
+
+    height: 64px;
+
+    border-radius: 15px;
+
+    border: 1px solid #4385ff;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    -webkit-tap-highlight-color: transparent;
+
+    touch-action: none;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+
+.control-button {
+
+    width: 75px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #182d60,
+            #0b1635
+        );
+
+    font-size: 30px;
+}
+
+
+.shoot-button {
+
+    width: 150px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #d52b42,
+            #7c1426
+        );
+
+    font-size: 17px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 7px;
+}
+
+
+.control-button:active {
+
+    transform: scale(0.92);
+
+    background: #244c99;
+}
+
+
+.shoot-button:active {
+
+    transform: scale(0.94);
+
+    background: #ef334f;
+}
+
+
+@media (max-width: 450px) {
+
+    #game-wrapper {
+        padding: 8px;
+    }
+
+    #hud {
+        grid-template-columns:
+            1fr
+            1fr
+            1.1fr
+            1fr
+            40px;
+    }
+
+    .hud-box {
+        min-height: 42px;
+    }
+
+    .hud-label {
+        font-size: 8px;
+    }
+
+    .hud-box span:last-child {
+        font-size: 12px;
+    }
+
+    .control-button {
+        width: 68px;
+        height: 58px;
+    }
+
+    .shoot-button {
+        width: 135px;
+        height: 58px;
+    }
+}
+
+
+@media (max-width: 350px) {
+
+    .control-button {
+        width: 60px;
+    }
+
+    .shoot-button {
+        width: 120px;
+    }
+
+    .shoot-button span {
+        font-size: 13px;
+    }
+}
